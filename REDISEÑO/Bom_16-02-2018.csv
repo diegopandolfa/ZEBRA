@@ -1,0 +1,40 @@
+Manufacturer Part Number,Manufacturer,Digi-Key Part Number,Customer Reference,Quantity,Unit Price,Extended Price,Quantity Available,Mfg Std Lead Time,Description,RoHS Status,Lead Free Status,REACH Status
+UHE1C222MHD6,Nichicon,493-1533-ND,cap 2200 uF 16V,12,0.764,9.16,9918,21 Weeks,CAP ALUM 2200UF 20% 16V RADIAL,RoHS Compliant,Lead free,Unaffected
+UHE1C102MHD6,Nichicon,493-1527-ND,cap 1000uF 16V,12,0.524,6.28,1553,24 Weeks,CAP ALUM 1000UF 20% 16V RADIAL,RoHS Compliant,Lead free,Unaffected
+ULD1C101MED1TD,Nichicon,493-14722-1-ND,cap 100uF 16V,100,0.1072,10.72,3416,18 Weeks,CAP ALUM 100UF 20% 16V THRU HOLE,RoHS Compliant,Lead free,Unaffected
+UCW1C221MCL1GS,Nichicon,493-9414-1-ND,cap 220uF 16V,168,0.2484,41.73,7796,17 Weeks,CAP ALUM 220UF 20% 16V SMD,RoHS Compliant,Lead free,Unaffected
+UCW1C220MCL1GS,Nichicon,493-9413-1-ND,cap 22uF 16V,25,0.354,8.85,1157,16 Weeks,CAP ALUM 22UF 20% 16V SMD,RoHS Compliant,Lead free,Unaffected
+CGA4J2X7R1C105M125AD,TDK Corporation,445-9911-1-ND,cap 1uF 16V,12,0.253,3.03,1891,20 Weeks,CAP CER 1UF 16V X7R 0805,RoHS Compliant,Lead free,Unaffected
+CL21B104KACNNNC,Samsung Electro-Mechanics,1276-1099-1-ND,cap 0.1uF 25V,276,0.0125,3.45,0,38 Weeks,CAP CER 0.1UF 16V X7R 0805,RoHS Compliant,Lead free,Unaffected
+UCB1C100MCL1GS,Nichicon,493-9365-1-ND,cap 10uF 16V,12,0.304,3.64,22001,16 Weeks,CAP ALUM 10UF 20% 16V SMD,RoHS Compliant,Lead free,Unaffected
+5-103634-7,TE Connectivity AMP Connectors,A32562-ND,socket hacia paneles (thrwhole right angle),25,1.235,30.87,5862,5 Weeks,CONN HEADER RTANG 8POS PCB TIN,RoHS Compliant,Lead free,Not Available
+5-103669-7,TE Connectivity AMP Connectors,A33904-ND,socket para paneles (throwhole),25,1.4,35.00,3101,7 Weeks,CONN HEADER VERT 8POS PCB TIN,RoHS Compliant,Lead free,Not Available
+104257-7,TE Connectivity AMP Connectors,A28417-ND,conectores paneles,50,0.5514,27.57,3406,4 Weeks,"CONN RECPT 8POS .1"" POL UNLOAD",RoHS Compliant,Lead free,Not Available
+RC2012F332CS,Samsung Electro-Mechanics,1276-5298-1-ND,Resistencia para el Buck,100,0.0178,1.78,57572,22 Weeks,RES SMD 3.3K OHM 1% 1/8W 0805,RoHS Compliant,Lead free,Unaffected
+ERA-6AEB102V,Panasonic Electronic Components,P1.0KDACT-ND,Resistencia para el Buck,120,0.1182,14.18,504539,23 Weeks,RES SMD 1K OHM 0.1% 1/8W 0805,RoHS Compliant,Lead free,Unaffected
+SS34,ON Semiconductor,SS34FSCT-ND,Diodo para el Buck,100,0.4224,42.24,19577,14 Weeks,DIODE SCHOTTKY 40V 3A SMC,RoHS Compliant,Lead free,Unaffected
+SRR1210-470M,Bourns Inc.,SRR1210-470MCT-ND,inductor para el Buck,84,1.11,93.24,14860,22 Weeks,FIXED IND 47UH 3.8A 72 MOHM SMD,RoHS Compliant,Lead free,Unaffected
+LMT86LP,Texas Instruments,296-37820-ND,Sensor de temperatura con patas rectas,12,0.688,8.25,2950,24 Weeks,SENSOR TEMP ANLG VOLT TO-92-3,RoHS Compliant,Lead free,Unaffected
+TIP31C,STMicroelectronics,497-2615-5-ND,para la luminaria,12,0.543,6.51,2133,42 Weeks,TRANS NPN 100V 3A TO-220,RoHS Compliant,Lead free,Not Available
+LM2596SX-ADJ/NOPB,Texas Instruments,296-35399-1-ND,lm2596 step down Buck,100,3.6153,361.53,3085,16 Weeks,IC REG BUCK ADJ 3A TO263-5,RoHS Compliant,Contains lead,Unaffected
+LTL2R3KRD-EM,Lite-On Inc.,160-1853-ND,led indiador de la placa de potencia,12,0.24,2.88,101663,14 Weeks,LED RED DIFF 5MM ROUND T/H,RoHS Compliant,Lead free,Not Available
+A9CCG-1603F,TE Connectivity AMP Connectors,A9CCG-1603F-ND,cable flex de ambas placas,12,6.636,79.63,0,Not Available,FLEX CABLE - AFG16G/AF16/AFG16G,RoHS Compliant,Lead free,Not Available
+6-103634-5,TE Connectivity AMP Connectors,A33890-ND,conector para el flex de ambas placas,24,2.416,57.98,5548,8 Weeks,CONN HEADER RTANG 16POS PCB TIN,RoHS Compliant,Lead free,Not Available
+796644-2,TE Connectivity AMP Connectors,A98248-ND,Conector PCB para brazo y alimentacion,25,0.4896,12.24,13750,21 Weeks,TERM BLOCK HDR 2POS 90DEG 5MM,RoHS Compliant,Lead free,Not Available
+796640-2,TE Connectivity AMP Connectors,A98241-ND,Conector cables brazo y alimentacion,25,1.0892,27.23,3577,4 Weeks,TERM BLOCK PLUG 2POS STR 5MM,RoHS Compliant,Lead free,Not Available
+796644-3,TE Connectivity AMP Connectors,A98249-ND,Conector PCB para cintas,36,0.548,19.72,96293,21 Weeks,TERM BLOCK HDR 3POS 90DEG 5MM,RoHS Compliant,Lead free,Not Available
+282805-3,TE Connectivity AMP Connectors,A113286-ND,Conector Cable de cintas,36,1.3524,48.68,655,21 Weeks,TERM BLOCK PLUG 3POS STR 5MM,RoHS Compliant,Lead free,Not Available
+ERJ-6ENF3300V,Panasonic Electronic Components,P330CCT-ND,opto y demases,132,0.0305,4.02,90053,Not Available,RES SMD 330 OHM 1% 1/8W 0805,RoHS Compliant,Lead free,Unaffected
+LD1117AS33TR,STMicroelectronics,497-1228-1-ND,regulador 3v3,12,0.603,7.23,8675,Not Available,IC REG LINEAR 3.3V 1A SOT223,RoHS Compliant,Lead free,Not Available
+MMBT3904LT3G,ON Semiconductor,MMBT3904LT3GOSCT-ND,transistor para reset,12,0.102,1.22,532,40 Weeks,TRANS NPN 40V 0.2A SOT23,RoHS Compliant,Lead free,Unaffected
+"TLP2745(TP,E",Toshiba Semiconductor and Storage,TLP2745(TPECT-ND,optoacopladores,108,0.7378,79.68,12085,Not Available,OPTOISO 5KV PUSH PULL SO6L,RoHS Compliant,Lead free,Not Available
+FT232RL-REEL,"FTDI, Future Technology Devices International Ltd",768-1007-1-ND,FTDI programacion inalambrica,12,4.05,48.60,49690,12 Weeks,IC USB FS SERIAL UART 28-SSOP,RoHS Compliant,Lead free,Unaffected
+DEV-14056,SparkFun Electronics,1568-1464-ND,Teensy 3.5 con pin headers,12,31.25,375.00,759,8 Weeks,TEENSY 3.5 (HEADERS),RoHS Compliant,Lead free,Not Available
+LMT86LPM,Texas Instruments,296-46127-1-ND,sensor temperatura con patas dobladas,12,0.757,9.08,1841,12 Weeks,ANALOG TEMPERATURE SENSOR,RoHS Compliant,Lead free,Unaffected
+XB24CZ7SIT-004,Digi International,602-1558-ND,xBee con RP-SMA,1,18.19,18.19,1413,2 Weeks,RF TXRX MODULE 802.15.4 RP-SMA,RoHS Compliant,Lead free,Not Available
+W1030,PulseLarsen Antennas,553-1309-ND,Antenas RP-SMA,4,3.78,15.12,14699,8 Weeks,"ANTENNA 2.4GHZ R-SMA BLACK 3""",RoHS Compliant,Lead free,Not Available
+,,,,,,,,,,,,
+,DOLAR,598,,Total USD$,,"1,514.53",,,,,,
+,(Precio del dolar al 16-02-2018),,,Shipping,USD$,80,,,,,,
+,,,,,,,,,,,,
+,,,,Total CLP$,,"905,688.94",,,,,,
