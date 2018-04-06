@@ -20,6 +20,7 @@ void setup()
   PORTC |= _BV(3); // VCC PINC3
   pinMode(ledPin, OUTPUT);
   //initial baudrate
+  Wire.begin();
   Serial.begin(9600);
   //get current time
   RTC.get(rtc, true);
@@ -58,9 +59,9 @@ void loop()
   }
   //blink the light
   Serial.println();
-  digitalWrite(ledPin, HIGH);
+  //digitalWrite(ledPin, HIGH);
   delay(500);
-  digitalWrite(ledPin, LOW);
+  //digitalWrite(ledPin, LOW);
   delay(500);
   //
   int j = 0;

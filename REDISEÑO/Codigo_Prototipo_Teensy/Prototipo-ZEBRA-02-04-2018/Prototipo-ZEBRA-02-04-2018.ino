@@ -13,6 +13,7 @@
 #include <Matrix.h>
 
 #include <Wire.h>
+#include <RTClib.h>
 
 #include <DFPlayer_Mini_Mp3.h> 
 
@@ -617,9 +618,19 @@ int resetPin = 11; // base de un transistor.
 int interrupt_pin_sensor = 12;
 int pinLightning = 35;
 
-SoftwareSerial mp3 = SoftwareSerial(31,32);
+bool isNight = false;
+RTC_DS1307 RTC;
+DateTime currentTime; 
+uint8_t hora = 0;
+uint8_t minuto = 0;
+uint8_t segundo = 0;
+uint8_t Dia = 0;
+uint8_t mes = 0;
+uint8_t anno = 0;
 
 void setup() {
+  pinMode(11, OUTPUT);
+  digitalWrite(11, LOW);
   FastLED.addLeds<NEOPIXEL,PIN_CINTAS>(cintas, NUM_PIX_CINTAS);
   FastLED.addLeds<NEOPIXEL,PIN_CORONAS>(coronas, NUM_PIX_CORONAS);
   matrix_principal.clear();
@@ -628,36 +639,82 @@ void setup() {
   pinMode(interrupt_pin_sensor, INPUT_PULLUP);/////////////////// <------------------sensor con interrupcion
   attachInterrupt(digitalPinToInterrupt(interrupt_pin_sensor), interruptServiceRoutine, FALLING); // cantos de bajada
   pinMode(pinLightning,OUTPUT);
-  mp3.begin(9600);
-  mp3_set_serial(mp3);   
-  delay(1);                     
+  Serial4.begin(9600);
+  while(!Serial4);
+  mp3_set_serial(Serial4); 
+  delay(100);               
   mp3_set_volume(30);
+  //////////////////////////////////////
+  Serial.begin(115200);
+  //while(!Serial);             
+  if(!RTC.begin()){
+    Serial.println("RTC not found!");
+  }
+  if (! RTC.isrunning()) {                       
+  Serial.println("RTC is NOT running!");
+  /////////////////////////////////////7
+  Serial1.begin(115200);
+  while(!Serial1);
+  Serial1.println("Hola!");
+  }
+  currentTime = RTC.now();
+  hora = currentTime.hour();
+  minuto = currentTime.minute();
+  segundo = currentTime.second();
+  Dia = currentTime.day();
+  mes = currentTime.month();
+  anno = currentTime.year();
+  String tmp = "fecha:\t";
+  tmp += anno;
+  tmp += "-";
+  tmp += mes;
+  tmp += "-";
+  tmp += Dia;
+  tmp += "\t";
+  tmp += hora;
+  tmp += ":";
+  tmp += minuto;
+  tmp += ":";
+  tmp += segundo;
+  Serial.println(tmp);
 }
 
 //----------Rutina de interrupción para el sensor-------//
 void interruptServiceRoutine(){
+  Serial.println("interrumpido!"); // debug
   TimeOfPeaton.reset();
   if(peatonIsPresent == false){
-    mp3_play (random(1, 7));
+    Serial1.print("P"); // peaton
+    mp3_next();
     TimeOfFrameMatrix.reset();
     TimeStandByRutine.reset();
     TimeStandByRutine.interval(TIME_DETECTED_RUTINE);
     peatonIsPresent = true;
-    mp3_play (random(1, 7));
   }
+  else{
+    Serial1.print("O");  
+  }  
 }
 
 void loop(){
   if(peatonIsPresent){
+    Serial.println("Peaton!");
     if(TimeOfFrameMatrix.check() == 1){
-      patternWalk();
+      if(isNight == true){
+        patternWalk();
+      }
+      else{
+        matrix_principal.clear();  
+      }
     }
     if(TimeStandByRutine.check() == 1){
       time_rutine_stand_by = true;
     }
     if(TimeOfFrameCintas.check() == 1){
       patternCintas();
-      lightOn();
+      if(isNight == true){
+        lightOn();
+      }
     }
     if(TimeOfFrameCoronas.check() == 1){
       patternCoronasOff();
@@ -674,25 +731,214 @@ void loop(){
     }
   }
   else{
+    Serial.println("no hay Peaton!");
     if(TimeStandByRutine.check() == 1){
       time_rutine_stand_by = true;
     }
     if(TimeOfFrameCintas.check() == 1){
       patternCintas();
-      lightOff();  
+      if(isNight == true){
+        lightOff();  
+      }
     }
     if(TimeOfFrameCoronas.check() == 1){
+      Serial.println("C");
+      Serial1.print("C"); // clear
       patternCoronasOff();
       matrix_principal.clear();
     }
     if(flag_cintas_fin){
       TimeOfFrameCoronas.reset();
       flag_cintas_fin = false;
-      patternStandBy();
+      if(isNight == true){
+        Serial.println("N");
+        Serial1.print("N"); // noche
+        patternStandBy();
+      }
+      else{
+        Serial.println("D");
+        Serial1.print("D"); // dia
+        matrix_principal.clear();  
+      }
       patternCoronasOn();
     }
   }
   FastLED.show();
+
+  //----------------Zona horaria----------------------// 
+  if(mes == 1){
+    Serial.println("enero");
+  //---------------DIA------------------------------
+    if(hora == 5 && minuto == 14 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 20 && minuto == 55 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+
+  else if(mes == 2){
+    Serial.println("febrero");
+  //---------------DIA------------------------------
+    if(hora == 5 && minuto == 54 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 20 && minuto == 32 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+
+  else if(mes == 3){
+    Serial.println("marzo");
+  //---------------DIA------------------------------
+    if(hora == 6 && minuto == 22 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 19 && minuto == 57 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+
+  else if(mes == 4){
+    Serial.println("abril");
+  //---------------DIA------------------------------
+    if(hora == 6 && minuto == 45 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 19 && minuto == 17 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+
+  else if(mes == 5){
+    Serial.println("mayo");
+  //---------------DIA------------------------------
+    if(hora == 7 && minuto == 4 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 18 && minuto == 49 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+
+  else if(mes == 6){
+    Serial.println("junio");
+  //---------------DIA------------------------------
+    if(hora == 7 && minuto == 18 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 18 && minuto == 43 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+
+  else if(mes == 7){
+    Serial.println("julio");
+  //---------------DIA------------------------------
+    if(hora == 7 && minuto == 16 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 18 && minuto == 55 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+
+  else if(mes == 8){
+    Serial.println("agosto");
+  //---------------DIA------------------------------
+    if(hora == 6 && minuto == 54 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 19 && minuto == 17 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+
+  else if(mes == 9){
+    Serial.println("septiembre");
+  //---------------DIA------------------------------
+    if(hora == 6 && minuto == 15 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 19 && minuto == 37 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+
+  else if(mes == 10){
+    Serial.println("octubre");
+  //---------------DIA------------------------------
+    if(hora == 5 && minuto == 31 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 19 && minuto == 58 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+
+  else if(mes == 11){
+    Serial.println("noviembre");
+  //---------------DIA------------------------------
+    if(hora == 4 && minuto == 54 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 20 && minuto == 27 && segundo > 0){
+      isNight = true;
+    }
+ //------------------------------------------------
+  }
+  else if(mes == 12){
+    Serial.println("diciembre");
+  //---------------DIA------------------------------
+    if(hora == 4 && minuto == 46 && segundo > 0){
+      isNight = false; 
+    }
+ //----------------NOCHE---------------------------
+    if(hora == 20 && minuto == 51 && segundo > 0){
+      isNight = true;
+    }
+  }
+  //-------------------Fin zona horaria------------------------//
+
+  //------------------- comunicacion---------------------------//
+  if(Serial1.available()>0){
+    Serial.println("datito!");
+    char data_incomming = Serial1.read();
+    if(data_incomming == 'P'){
+      TimeOfPeaton.reset();
+      if(peatonIsPresent == false){
+        TimeOfFrameMatrix.reset();
+        TimeStandByRutine.reset();
+        TimeStandByRutine.interval(TIME_DETECTED_RUTINE);
+        peatonIsPresent = true;
+      }  
+    }
+    else if(data_incomming == 'O'){
+      TimeOfPeaton.reset();  
+    }  
+  }
+  Serial.println("estoy aqui!");
 }
 
 void patternCintas(){

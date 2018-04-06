@@ -617,7 +617,7 @@ int resetPin = 11; // base de un transistor.
 int interrupt_pin_sensor = 12;
 int pinLightning = 35;
 
-SoftwareSerial mp3 = SoftwareSerial(31,32);
+
 
 void setup() {
   FastLED.addLeds<NEOPIXEL,PIN_CINTAS>(cintas, NUM_PIX_CINTAS);
@@ -628,22 +628,16 @@ void setup() {
   pinMode(interrupt_pin_sensor, INPUT_PULLUP);/////////////////// <------------------sensor con interrupcion
   attachInterrupt(digitalPinToInterrupt(interrupt_pin_sensor), interruptServiceRoutine, FALLING); // cantos de bajada
   pinMode(pinLightning,OUTPUT);
-  mp3.begin(9600);
-  mp3_set_serial(mp3);   
-  delay(1);                     
-  mp3_set_volume(30);
 }
 
 //----------Rutina de interrupción para el sensor-------//
 void interruptServiceRoutine(){
   TimeOfPeaton.reset();
   if(peatonIsPresent == false){
-    mp3_play (random(1, 7));
     TimeOfFrameMatrix.reset();
     TimeStandByRutine.reset();
     TimeStandByRutine.interval(TIME_DETECTED_RUTINE);
     peatonIsPresent = true;
-    mp3_play (random(1, 7));
   }
 }
 
